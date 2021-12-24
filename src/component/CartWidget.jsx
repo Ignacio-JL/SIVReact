@@ -1,8 +1,10 @@
 import React from 'react'
+import {BsCartPlusFill} from 'react-icons/bs'
+
 
 function CartWidget() {
     return (
-        <div>Mi carrito :C</div>
+        <BsCartPlusFill />
     )
 }
 

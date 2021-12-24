@@ -11,7 +11,8 @@ function NavBar() {
                         <Nav.Link href="#home">Inicio</Nav.Link>
                         <Nav.Link href="#features">Productos</Nav.Link>
                         <Nav.Link href="#pricing">Contacto</Nav.Link>
-                        <CartWidget />
+                        <Nav.Link href="#"><CartWidget /></Nav.Link>
+                        
                     </Nav>
             </Container>
         </Navbar>
