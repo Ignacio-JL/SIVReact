@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { getProductos } from '../helpers/mock';
-import ItemList from './ItemList'
+import { getProductos } from '../../helpers/mock';
+import ItemList from './ItemList/ItemList'
 
 function ItemListContainer(props) {
 
