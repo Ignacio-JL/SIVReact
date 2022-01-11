@@ -1,0 +1,26 @@
+.navbar-item{
+    position: relative;
+    text-decoration: none;
+    color: rgba(255,255,255,.55);
+}
+.navbar-item:hover{
+    color: #fff;
+}
+.navbaractive{
+    color: #fff !important; 
+}
+.text-navbar{
+    text-decoration: none;
+    color: #fff;
+}
+.text-dropdown, .text-dropdown:hover{
+    text-decoration: none;
+    color: #000;
+}
+/* Bootstrap */
+.dropdown-item.active,
+.dropdown-item:active {
+    /* color: #000;
+    text-decoration: none; */
+    background-color: #ECC452;
+}

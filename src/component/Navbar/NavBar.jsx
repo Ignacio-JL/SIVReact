@@ -1,19 +1,33 @@
 import React from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 import CartWidget from '../CartWidget';
+import '../Navbar/NavBar.css';
 
 function NavBar() {
     return (
-        <Navbar bg="dark" variant="dark">
+        
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Creaciones SIV</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Inicio</Nav.Link>
-                        <Nav.Link href="#features">Productos</Nav.Link>
-                        <Nav.Link href="#pricing">Contacto</Nav.Link>
-                        <Nav.Link href="#"><CartWidget /></Nav.Link>
+                <Navbar.Brand><NavLink to="/" className='navbar-item'>Creaciones SIV</NavLink></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav >
+                            <NavLink to='/' className="nav-link">Inicio</NavLink>
+                            <NavLink to='/contacto' className="nav-link">Contacto</NavLink>
+                            
+                            
+                            <NavDropdown title="Productos" id="collasible-nav-dropdown">
+                            <NavLink to="/products/Nene" className="dropdown-item">Niños</NavLink>
+                                <NavLink to="/products/Nena" className="dropdown-item">Niñas</NavLink>
+                                <NavLink to="/products/Bebe" className="dropdown-item">Bebés</NavLink>
+                                <NavDropdown.Divider />
+                                <NavLink to="/products/" className="dropdown-item">Todos</NavLink>
+                            </NavDropdown>
+                            <Nav.Link href="#"><CartWidget /></Nav.Link>
+                        </Nav>
                         
-                    </Nav>
+                    </Navbar.Collapse>
             </Container>
         </Navbar>
     )

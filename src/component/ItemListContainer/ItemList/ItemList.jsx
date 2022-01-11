@@ -11,7 +11,7 @@ function ItemList({productos, loading}) {
                 {loading ? <h2>Cargando ...</h2>
                     :
                         productos.map(prod => 
-                            <Item p={prod}/>
+                            <Item p={prod} key={prod.id}/>
                 )}
 
             </center>
