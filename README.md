@@ -3,12 +3,12 @@
 Se trata de una tienda de ropa para un emprendimiento mayorista.
 
 ### Utilice las siguientes tecnologias
-* React
+* React JS
     * Bootstrap
     * react-router-dom
     * Css
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* IDE
+    * VS code
 
 ## Available Scripts
 
