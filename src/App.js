@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import ItemCount from './component/ItemCount';
 import ItemDetailContainer from './component/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './component/ItemListContainer/ItemListContainer';
 import NavBar from './component/Navbar/NavBar';
@@ -19,7 +18,6 @@ function App() {
             <Route exact path='/products' element={<ItemListContainer/>} />
             <Route exact path='/products/:category' element={<ItemListContainer/>} />
             <Route exact path='/detail/:idDetail' element={<ItemDetailContainer/>}/>
-            <Route exact path='/count' element={<ItemCount/>}/>
             
             
           </Routes>

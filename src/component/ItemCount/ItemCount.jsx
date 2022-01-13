@@ -29,9 +29,9 @@ function ItemCount() {
     return (
         <div>
             <center>
-                <h3>Producto X</h3>
-                <Button variant="primary" onClick={btnContadorNot}>-</Button><span style={{paddingLeft: 10, paddingRight: 10}}>{count}</span><Button variant="primary" onClick={btnContador}>+</Button>
+                <Button variant="primary" onClick={btnContadorNot}>-</Button><span style={{paddingLeft: 10, paddingRight: 10}}>{count} Pack</span><Button variant="primary" onClick={btnContador}>+</Button>
             </center>
+            
         </div>
     )
 }
