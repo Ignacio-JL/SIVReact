@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ItemCount from './../../ItemCount/ItemCount';
 import OptionColor from './OptionColor/OptionColor';
 
@@ -8,7 +7,7 @@ function ItemDetail({producto}) {
 
     const [isCart, setIsCart] = useState(false);
     
-    const handleBtn = _ =>{
+    const onAdd = _ =>{
         setIsCart(true);
     }
 
@@ -22,14 +21,8 @@ function ItemDetail({producto}) {
                 <li>Precio pack completo $ {producto.price * producto.sizeTotal}</li>
                 <img src={producto.imgUrl} alt='' className='w-50'/>
                 <OptionColor/>
-                <ItemCount/>
-                <div>
-                    { isCart ? 
-                        <Link to='/cart'><button className='btn btn-outline-success'>Ir a Carrito</button></Link>
-                        :
-                        <button className='btn btn-outline-success' onClick={handleBtn}>Agregar al carrito</button>
-                    }
-                </div>
+                <ItemCount isCart={isCart} onAdd={onAdd}/>
+                
             </div>
         </center>
     )
