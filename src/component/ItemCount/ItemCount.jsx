@@ -39,7 +39,7 @@ function ItemCount({isCart, onAdd}) {
                             <Link to='/products/'><button className='btn btn-outline-primary'>Seguir Comprando</button></Link>
                         </div>
                         :
-                        <button className='btn btn-outline-success' onClick={onAdd} disabled={count < 1 && 'disabled'}>Agregar al carrito</button>
+                        <button className='btn btn-outline-success' onClick={() => onAdd(count)} disabled={count < 1 && 'disabled'}>Agregar al carrito</button>
                         
                     }
             </div>

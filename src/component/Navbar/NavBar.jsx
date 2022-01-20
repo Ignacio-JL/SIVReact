@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CartWidget from '../CartWidget';
 import '../Navbar/NavBar.css';
 
@@ -24,7 +24,7 @@ function NavBar() {
                                 <NavDropdown.Divider />
                                 <NavLink to="/products/" className="dropdown-item">Todos</NavLink>
                             </NavDropdown>
-                            <Nav.Link href="#"><CartWidget /></Nav.Link>
+                            <NavLink to="/cart/" className="nav-link"><CartWidget /></NavLink>
                         </Nav>
                         
                     </Navbar.Collapse>

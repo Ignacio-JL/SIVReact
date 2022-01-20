@@ -107,6 +107,6 @@ export const getProductos = new Promise( (resolve, rejected) => {
         setTimeout(() =>{
             resolve(productos);
         }, 2000)
-    }else{console.log('error de promesa')}
+    }else{rejected('error')}
 });
 

@@ -1,15 +1,19 @@
 import React from 'react'
 import { useState } from 'react';
+import { useCartContext } from '../../../context/cartContext';
 import ItemCount from './../../ItemCount/ItemCount';
 import OptionColor from './OptionColor/OptionColor';
 
 function ItemDetail({producto}) {
 
+    const {addToCart} = useCartContext();
     const [isCart, setIsCart] = useState(false);
     
-    const onAdd = _ =>{
+    const onAdd = (cant) =>{
         setIsCart(true);
+        addToCart({...producto, quantity: cant});
     }
+
 
     return (
         <center>

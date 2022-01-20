@@ -26,7 +26,13 @@ function ItemListContainer(props) {
     }, [category]);
     return (
         <div>
-            <ItemList productos={productos} loading={loading}/>
+            {
+                loading ? 
+                <h2>Cargando ...</h2>
+                :
+                <ItemList productos={productos}/>
+
+            }
         </div>
     )
 }
