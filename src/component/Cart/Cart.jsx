@@ -25,7 +25,7 @@ function Cart() {
                         <th>Nombre</th>
                         <th></th>
                         <th>Cantidad</th>
-                        <th>Precio(Pack)</th>
+                        <th>Precio (Pack)</th>
                         <th>Subtotal</th>
                         <th></th>
                     </tr>
