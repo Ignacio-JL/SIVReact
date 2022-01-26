@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductos } from '../../helpers/mock';
 import ItemList from './ItemList/ItemList';
 import { css } from '@emotion/react';
 import ClockLoader from 'react-spinners/ClockLoader';
-import { collection, doc, getDocs, getDoc, getFirestore, query } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 function ItemListContainer(props) {
 
@@ -18,30 +17,23 @@ function ItemListContainer(props) {
   `;
 
 
-//   const [producto, setProducto] = useState({});//Ejemplo para un solo producto
-
     useEffect(() => {
         const db = getFirestore(); //Enlace con firebase
-        const queryCollection = query(collection(db, 'items')); //consulta collecion
-        // const queryProd = doc(db, 'items', 'id');//consulta uno solo
-        // getDoc().then(resp => setProducto({id: resp.id, ...resp.data()}))
-        getDocs(queryCollection)
-            .then(res => setProductos(res.docs.map(prod =>  ({ id : prod.id, ...prod.data() }) )))
-            .catch(err => err)
-            .finally(setLoading(false));
+        if(category){
+            const queryCollection = query(collection(db, 'items'), where('category', '==', category )); //consulta con where
+            getDocs(queryCollection)
+                .then(res => setProductos(res.docs.map(prod =>  ({ id : prod.id, ...prod.data() }) )))
+                .catch(err => err)
+                .finally(setLoading(false));
+        }
+        else{
+            const queryCollection = query(collection(db, 'items')); //consulta collecion
+            getDocs(queryCollection)
+                .then(res => setProductos(res.docs.map(prod =>  ({ id : prod.id, ...prod.data() }) )))
+                .catch(err => err)
+                .finally(setLoading(false));
+        }
 
-
-        // if(category){
-        //     getProductos
-        //         .then(resp => setProductos(resp.filter(prod => prod.category === category)))
-        //         .catch(err => console.log(err))
-        // }
-        
-        // else{
-        //             getProductos
-        //         .then(resp => setProductos(resp))
-        //         .catch(err => console.log(err))
-        // }
 
     }, [category]);
     return (
