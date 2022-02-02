@@ -2,6 +2,7 @@ import React from 'react';
 import './Cart.css'
 import {useCartContext} from '../../context/cartContext';
 import { Link } from 'react-router-dom';
+import Order from './Order/Order';
 
 
 function Cart() {
@@ -52,6 +53,7 @@ function Cart() {
                 Total: {totalCart()}
             </div>
             <button className='btn btn-outline-danger mt-2' onClick={deleteCart}>Vaciar Carrito</button>
+            <Order/>
         </div>
     )
 }
