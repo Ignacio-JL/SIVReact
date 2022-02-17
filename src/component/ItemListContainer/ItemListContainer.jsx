@@ -30,7 +30,6 @@ function ItemListContainer(props) {
             const queryCollection = query(collection(db, 'items')); //consulta collecion
             getDocs(queryCollection)
                 .then(res => setProductos(res.docs.map(prod =>  ({ id : prod.id, ...prod.data() }) )))
-                .catch(err => err)
                 .finally(setLoading(false));
         }
  

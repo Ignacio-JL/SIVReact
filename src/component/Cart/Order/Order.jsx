@@ -5,11 +5,12 @@ import { useCartContext } from '../../../context/cartContext';
 
 function Order() {
 
-    const { cartList, totalCart } = useCartContext();
+    const { cartList, totalCart, deleteCart } = useCartContext();
     const [dataForm, setDataForm] = useState({
         name: '',
         phone: '',
-        email: ''
+        email: '',
+        dni: ''
     });
 
     async function buyCart(e){
@@ -25,18 +26,22 @@ function Order() {
 
             return {id, name, price, quantity};
         });
+        order.status = 'En preparacion';
 
         const db = getFirestore();
         const orderCollection = collection(db,'ordenes');
 
         await addDoc(orderCollection, order)
-            .then(({id}) => document.getElementById('ordenId').innerHTML=`Tu id de orden es: ${id}`) //mostramos ID
-            .catch(err => console.log(err))
-            .finally(() => setDataForm({ 
-                name: '',
-                phone: '',
-                email: ''
-            }));
+            .then(({id}) => document.getElementById('ordenId').innerHTML=`Tu orden se generó correctamente, tu id de orden es: ${id}`)
+            .finally(() =>{
+                setDataForm({ 
+                    name: '',
+                    phone: '',
+                    email: '',
+                    dni: ''
+                });
+                deleteCart();
+            } );
 
 
         //actualizacion de stock de items comprados
@@ -65,17 +70,21 @@ function Order() {
             [e.target.name]: e.target.value
             }
         )
+        
     }
     return  <div>
                 <form onSubmit={buyCart}>
                     <div>
-                        <input type='text' name='name' placeholder='Nombre' onChange={handleChange} value={dataForm.name}/>
+                        <input type='text' name='name' placeholder='Nombre' onChange={handleChange} value={dataForm.name} required/>
                     </div>
                     <div>
-                        <input type='number' name='phone' placeholder='Telefono' onChange={handleChange} value={dataForm.phone}/>
+                        <input type='number' name='phone' placeholder='Telefono' onChange={handleChange} value={dataForm.phone} required/>
                     </div>
                     <div>
-                        <input type='email' name='email' placeholder='Email' onChange={handleChange} value={dataForm.email}/>
+                        <input type='number' name='dni' placeholder='Dni' onChange={handleChange} value={dataForm.dni} required/>
+                    </div>
+                    <div>
+                        <input type='email' name='email' placeholder='Email' onChange={handleChange} value={dataForm.email} required/>
                     </div>
                     <button className='btn btn-outline-success mt-2'>Generar Orden</button>
                 </form>

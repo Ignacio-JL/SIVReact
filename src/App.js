@@ -7,6 +7,7 @@ import NavBar from './component/Navbar/NavBar';
 import IndexWelcome from './component/IndexWelcome/IndexWelcome';
 import { CartContextProvider } from './context/cartContext';
 import Cart from './component/Cart/Cart';
+import Contact from './component/Contact/Contact';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route exact path='/' element={<IndexWelcome nombreTienda={nombreTienda}/>}/>
               <Route exact path='/products' element={<ItemListContainer/>} />
+              <Route exact path='/contact' element={<Contact/>} />
               <Route exact path='/products/:category' element={<ItemListContainer/>} />
               <Route exact path='/detail/:idDetail' element={<ItemDetailContainer/>}/>
               <Route exact path='/cart' element={<Cart/>} />

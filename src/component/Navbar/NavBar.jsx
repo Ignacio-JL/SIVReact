@@ -14,7 +14,7 @@ function NavBar() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav >
                             <NavLink to='/' className="nav-link">Inicio</NavLink>
-                            <NavLink to='/contacto' className="nav-link">Contacto</NavLink>
+                            <NavLink to='/contact' className="nav-link">Contacto</NavLink>
                             
                             
                             <NavDropdown title="Productos" id="collasible-nav-dropdown">

@@ -6,6 +6,7 @@ import ItemDetail from './ItemDetail/ItemDetail';
 
 function ItemDetailContainer() {
     
+    const [loading, setLoading] = useState(true);
     const [producto, setProducto] = useState({});
     const {idDetail} = useParams();
     
@@ -13,14 +14,16 @@ function ItemDetailContainer() {
     useEffect(() => {
         const db = getFirestore(); //Enlace con firebase
         const queryProd = doc(db, 'items', idDetail);//consulta uno solo
-        getDoc(queryProd).then(resp => setProducto({id: resp.id, ...resp.data()}))
+        getDoc(queryProd)
+            .then(resp => setProducto({id: resp.id, ...resp.data()}))
+            .finally(setLoading(false));
         
             
     }, [idDetail]);
 
     return (
         <div>
-            <ItemDetail producto={producto}/>
+            <ItemDetail loading={loading} producto={producto}/>
         </div>
     )
 }

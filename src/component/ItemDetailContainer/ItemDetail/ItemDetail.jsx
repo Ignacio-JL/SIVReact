@@ -5,23 +5,17 @@ import BarLoader from 'react-spinners/BarLoader';
 import { useCartContext } from '../../../context/cartContext';
 import ItemCount from './../../ItemCount/ItemCount';
 import OptionColor from './OptionColor/OptionColor';
-import { useEffect } from 'react';
 
-function ItemDetail({producto}) {
+function ItemDetail({producto, loading}) {
 
     const {addToCart} = useCartContext();
     const [isCart, setIsCart] = useState(false);
-    const [loading, setLoading] = useState(true);
+    
     const  override  =  css`
     display: block;
     margin: 50px;
     border-color: #39CEAF;
   `;
-    useEffect (() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-    })
     const onAdd = (cant) =>{
         setIsCart(true);
         addToCart({...producto, quantity: cant});
