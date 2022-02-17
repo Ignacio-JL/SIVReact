@@ -5,7 +5,7 @@ import { useCartContext } from '../../../context/cartContext';
 
 function Order() {
 
-    const { cartList, totalCart, deleteCart } = useCartContext();
+    const { cartList, totalCart } = useCartContext();
     const [dataForm, setDataForm] = useState({
         name: '',
         phone: '',
@@ -40,7 +40,6 @@ function Order() {
                     email: '',
                     dni: ''
                 });
-                deleteCart();
             } );
 
 

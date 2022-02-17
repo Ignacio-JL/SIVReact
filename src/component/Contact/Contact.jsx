@@ -4,22 +4,20 @@ import { useState } from 'react'
 
 export default function Contact() {
     const [dataForm, setDataForm] = useState('');
+    const db = getFirestore();
 
-    function consulta(e){
+    async function consulta(e){
         e.preventDefault();
-        const db = getFirestore();
         const queryOrder = doc(db, 'ordenes', dataForm);
-        getDoc(queryOrder)
+        await getDoc(queryOrder)
             // .then(resp => document.getElementById('rta').innerHTML=`El estado de tu pedido es: ${resp.data().id}`);
-            .then(resp => console.log(resp.data()));
-        
+            .then(resp => document.getElementById('rta').innerHTML=`El estado de tu pedido es: ${resp.data().status}`)
+            .catch(() => document.getElementById('rta').innerHTML=`Ocurrio un error, ingresa correctamente el id`);
     }
 
     function handleChange(e){
-        setDataForm({
-            ...dataForm,
-            [e.target.name]: e.target.value
-            }
+        setDataForm(
+            e.target.value
         )
     }
     
@@ -41,7 +39,7 @@ export default function Contact() {
             Numero +549 1170969187
         </p>
         <h3>Consulta tu pedido ingresando el id de tu pedido</h3>
-        
+
         <form onSubmit={consulta}>
             <div>
                 <input type="text" name='consulta' onChange={handleChange} placeholder='Id de pedido' value={dataForm.value} required/>
