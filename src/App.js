@@ -11,7 +11,7 @@ import Contact from './component/Contact/Contact';
 
 function App() {
 
-  const nombreTienda='Creaciones SIV';
+  const nombreTienda='Creaciones SIV!';
   return (
     <div className="App">
       <CartContextProvider>
