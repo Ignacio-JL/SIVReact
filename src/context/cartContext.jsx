@@ -35,6 +35,7 @@ export const CartContextProvider = ({children}) => {
         cartList.forEach(element => {
             total += element.quantity;
         });
+        console.log('holalalalalla');
         return total;
     }
 
